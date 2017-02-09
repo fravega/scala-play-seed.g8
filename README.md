@@ -1,18 +1,16 @@
 # scala-play-seed
-Seed template for Play projects in Scala
 
-### Run
+[g8](http://www.foundweekends.org/giter8/) template to get a Play web service up and running quickly.
 
-```bash
-sbt run
+## Use this template ##
+
+- [Install SBT](http://www.scala-sbt.org/download.html) (NOTICE: 0.13.13 or higher required)
+- Get the g8 template and run it:
+
+```sh
+$ sbt new fravega/scala-play-seed.g8
+$ cd <name-of-app>
+$ sbt run
 ```
 
-### Debug
-
-```bash
-sbt run -jvm-debug 8080
-```
-
-### Release
-
-####TODO
+- Open [http://localhost:9000/](http://localhost:9000/) in your browser.
