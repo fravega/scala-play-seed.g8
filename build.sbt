@@ -39,26 +39,34 @@ resolvers ++= Seq("OSS" at "http://oss.sonatype.org/content/repositories/release
 
 // ··· Project Dependancies ···
 
-val vConfigs          = "0.4.4"
-val vScalDI           = "0.5.15"
-val vSlf4J            = "1.7.22"
-val vLogback          = "1.1.8"
-val vSpec2            = "3.8.6"
-val vJUnit            = "4.12"
+val configsV                = "0.4.4"
+val scalDIV                 = "0.5.15"
+val playJsonExtensionsV     = "0.8.0"
+val slf4JV                  = "1.7.22"
+val logbackV                = "1.2.1"
+val spec2V                  = "3.8.8"
+val jUnitV                  = "4.12"
 
 libraryDependencies ++= Seq(
   // --- Play --
   ws,
   cache,
+  filters,
   specs2 % Test,
   // --- Utils ---
-  "org.scaldi"                    %% "scaldi-play"                        % vScalDI,
-  "com.github.kxbmap"             %% "configs"                            % vConfigs,  
+  "org.scaldi"                    %% "scaldi-play"                        % scalDIV,
+  "com.github.kxbmap"             %% "configs"                            % configsV,
+  "ai.x"                          %% "play-json-extensions"               % playJsonExtensionsV,
   // --- Logger ---
-  "org.slf4j"                     %  "slf4j-api"                          % vSlf4J,
-  "ch.qos.logback"                %  "logback-classic"                    % vLogback          %  "test",
+  "org.slf4j"                     %  "slf4j-api"                          % slf4JV,
+  "ch.qos.logback"                %  "logback-classic"                    % logbackV          %  "test",
   // --- Testing ---
-  "org.specs2"                    %% "specs2-mock"                        % vSpec2            %  "test",
-  "org.specs2"                    %% "specs2-junit"                       % vSpec2            %  "test",
-  "junit"                         %  "junit"                              % vJUnit            %  "test"
+  "org.specs2"                    %% "specs2-mock"                        % spec2V            %  "test",
+  "org.specs2"                    %% "specs2-junit"                       % spec2V            %  "test",
+  "junit"                         %  "junit"                              % jUnitV            %  "test"
 )
+
+// ··· Play Configuration ···
+
+routesGenerator := InjectedRoutesGenerator
+routesImport += "controllers._"
